@@ -1,0 +1,11 @@
+import React from 'react';
+import { SafeAreaView, ScrollView, Text, View, Pressable, Linking, StyleSheet } from 'react-native';
+const sections=[
+{title:'Travel & Visa Information',desc:'Explore official visa and travel resources. Visa approvals are never guaranteed.',url:'https://www.iatatravelcentre.com/'},
+{title:'China Business Connections',desc:'Supplier and agent directory coming soon. Verify registration, contracts and payments independently.'},
+{title:'Cars & iPhones',desc:'Browse upcoming sourcing and preorder listings. Stock and final prices require confirmation.'},
+{title:'Membership',desc:'Membership registration and payment features are not yet enabled.'},
+{title:'Contact',desc:'Business inquiries and support will be added after verification.'}
+];
+export default function Home(){return <SafeAreaView style={s.root}><ScrollView contentContainerStyle={s.content}><Text style={s.brand}>JORDAN SP</Text><Text style={s.heading}>Business Club</Text><Text style={s.sub}>Travel guidance • China business • Global sourcing</Text>{sections.map((item)=> <View key={item.title} style={s.card}><Text style={s.title}>{item.title}</Text><Text style={s.desc}>{item.desc}</Text>{item.url?<Pressable accessibilityRole="button" onPress={()=>Linking.openURL(item.url!)} style={s.button}><Text style={s.buttonText}>Open travel resource</Text></Pressable>:null}</View>)}<Text style={s.footer}>Information only. No verified agents, visa guarantees, live inventory or payment collection is offered in this starter version.</Text></ScrollView></SafeAreaView>}
+const s=StyleSheet.create({root:{flex:1,backgroundColor:'#0c1726'},content:{padding:22,paddingTop:40,paddingBottom:50},brand:{fontSize:15,color:'#f3b35c',fontWeight:'800',letterSpacing:3},heading:{fontSize:34,color:'#fff',fontWeight:'800',marginTop:8},sub:{color:'#b9c7d9',fontSize:14,marginTop:10,marginBottom:22},card:{backgroundColor:'#18283c',borderRadius:16,padding:20,marginBottom:14},title:{color:'#fff',fontWeight:'700',fontSize:19},desc:{color:'#d0d8e4',fontSize:14,lineHeight:21,marginTop:8},button:{backgroundColor:'#e7a84e',padding:12,borderRadius:9,marginTop:14,alignSelf:'flex-start'},buttonText:{color:'#152234',fontWeight:'700'},footer:{color:'#94a4b7',fontSize:12,lineHeight:18,marginTop:10}});
